@@ -11,11 +11,12 @@ var userSchema = mongooes.Schema({
   bio: String
 });
 
-userSchema.methods.name = () => {
+userSchema.methods.name = function() {
+  console.log('asd');
   return this.displayName || this.username;
 };
 
-userSchema.pre("save", function(done){
+userSchema.pre("save", function(done) {
   if (this.isModified("password")) {
     return done();
   }
