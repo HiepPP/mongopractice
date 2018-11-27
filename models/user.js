@@ -4,10 +4,10 @@ var SALT_FACTOR = 10;
 var noop = function() {};
 
 var userSchema = mongooes.Schema({
-  userName: { type: String, required: true, unique: true },
+  username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  createAt: { type: Date, default: Date.now },
-  displayName: String,
+  createat: { type: Date, default: Date.now },
+  displayname: String,
   bio: String
 });
 
@@ -15,7 +15,7 @@ userSchema.methods.name = () => {
   return this.displayName || this.username;
 };
 
-userSchema.pre("save", done => {
+userSchema.pre("save", function(done){
   if (this.isModified("password")) {
     return done();
   }
